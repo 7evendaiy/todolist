@@ -51,9 +51,10 @@ function renderTodoItemList(todoItems, finishedItems) {
         deleteBtn.innerText = "x";
 
         deleteBtn.addEventListener("click",(e) =>{
+            console.log(i)
             todoItems.splice(i, 1);
+            renderTodoItemList(todoItems, finishedItems)
             
-            renderFinishedItemList(todoItems, finishedItems)
         })
         
         titleEl.innerText = item.title;
