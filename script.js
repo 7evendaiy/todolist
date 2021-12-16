@@ -2,7 +2,6 @@ let todoItems = [];
 
 let finishedItems = [];
 
-let deleteItems = [];
 function renderTodoItemList(todoItems, finishedItems) {
 
     let paneEl = document.querySelector("#todolist > .list-pane");
@@ -57,6 +56,23 @@ function renderTodoItemList(todoItems, finishedItems) {
             
         })
         
+        titleEl.addEventListener("dblclick",(e) =>{
+            let changeEl = document.createElement("input");
+            
+            titleEl.innerText = ""
+            titleEl.append(changeEl);
+            changeEl.addEventListener("keydown",(e) =>{
+                if (e.code == 'Enter'){
+                   titleEl.innerText = changeEl.value;
+                        
+                }
+            })
+            
+        })
+        
+
+
+
         titleEl.innerText = item.title;
 
 
@@ -111,13 +127,15 @@ function renderInputPane(todoItems) {
 
     addBtnEl.addEventListener("click", (e)=>{
         let inputEl = inputPaneEl.querySelector("input");
-
-        todoItems.push({
-            title: inputEl.value,
-            isFinished: false,
-            isImportance: false, 
+        if (inputEl.value===""){
+            alert('There is nothing!!')}
+        else{
+            todoItems.push({
+                title: inputEl.value,
+                isFinished: false,
+                isImportance: false, 
         })
-        
+    }
         console.log("add a item: ", inputEl.value);
         renderTodoItemList(todoItems, finishedItems);
     });
