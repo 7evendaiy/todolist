@@ -13,12 +13,12 @@ body {
 }
 
 .todolist-panel {
-    width: 24em;
+    width: 27em;
     min-height: 25em;
     background-color: #F5F5DC;
     border: 1px solid #bbb;
     box-shadow: 2px 2px 2px #bbb;
-
+    overflow-y: auto;
 }
 
 .input-pane {
@@ -69,7 +69,7 @@ body {
 
 
 .input-pane  #his-btn.open {
-    background-color: rgb(172, 173, 91);
+    background-color: rgb(199, 201, 125);
 }
 
 .his-btn {

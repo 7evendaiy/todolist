@@ -26,7 +26,7 @@ function renderTodoItemList(todoItems, finishedItems) {
 
         let titleEl = document.createElement("div");
         titleEl.className = "title";
-
+                  
         let importanceEl = document.createElement("div");
         importanceEl.className = "important-flag";
         importanceEl.innerText = "!";
@@ -56,6 +56,9 @@ function renderTodoItemList(todoItems, finishedItems) {
             
         })
         
+        
+        titleEl.innerText = item.title;
+        
         titleEl.addEventListener("dblclick",(e) =>{
             let changeEl = document.createElement("input");
             
@@ -63,19 +66,18 @@ function renderTodoItemList(todoItems, finishedItems) {
             titleEl.append(changeEl);
             changeEl.addEventListener("keydown",(e) =>{
                 if (e.code == 'Enter'){
-                   titleEl.innerText = changeEl.value;
-                        
+                    if (changeEl.value === ""){
+                        alert("There is nothing!!")
+                    }else{
+                        titleEl.innerText = changeEl.value
+                        todoItems[i].title = changeEl.value}   
                 }
+                
             })
-            
+               
         })
+
         
-
-
-
-        titleEl.innerText = item.title;
-
-
         itemDiv.append(inputEl);
         itemDiv.append(titleEl);
         itemDiv.append(importanceEl);
